@@ -5,12 +5,14 @@
 <h1 class= "text-center">Listing of User's Events</h1>
 <hr>
 <%= link_to 'New Event', new_event_path %><br/>
+
 <div class="digg_pagination">
     <div class="page_info">
       <%= page_entries_info @events %>
     </div>
     <%= will_paginate @events, :container => false %>
-</div>   
+</div>
+   
 <table class="table table-hover">
   <thead>
     <tr>
