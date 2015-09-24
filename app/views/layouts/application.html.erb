@@ -8,8 +8,13 @@
 </head>
 <body>
 <% if user_signed_in? %>
+		
     Welcome <%=  current_user.email %>
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+    <div class="pull-right">
+	  <%= button_to "Dashboard", home_events_path, :method => "get", :class=> "btn btn-primary" %>
+	</div>
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete , :class => "btn btn-danger" %>
+
 <% else %>
     <%= link_to "Sign in", new_user_session_path%> or <%= link_to "Sign up", new_user_registration_path %>
 <% end %>
