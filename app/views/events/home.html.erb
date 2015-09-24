@@ -2,17 +2,19 @@
 <div class="pull-right">
       <%= button_to "Event's Page", events_path, :method => "get", :class=> "btn btn-primary" %>
     </div>
+<div class="pull-left">
+    <%= button_to 'New Event', new_event_path, :method => "get", :class => "btn btn-primary" %><br/>
+</div>    
 <h1 class= "text-center">Listing of User's Events</h1>
 <hr>
-<%= link_to 'New Event', new_event_path %><br/>
 
-<div class="digg_pagination">
+  <div class="digg_pagination">
     <div class="page_info">
       <%= page_entries_info @events %>
     </div>
     <%= will_paginate @events, :container => false %>
 </div>
-   
+
 <table class="table table-hover">
   <thead>
     <tr>
@@ -28,7 +30,7 @@
 
   <tbody>
     <% @events.each do |event| %>
-      <tr>
+      <tr id="edit_event_<%=event.id%>">
         <td><%= event.title %></td>
         <td><%= event.description %></td>
         <td><%= event.date %></td>

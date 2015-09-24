@@ -5,7 +5,20 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.order(sort_column + " " + sort_direction).where("user_id <> ?", current_user.id).page(params[:page]).per_page(5)
+    if current_user
+      if params[:search]
+        @events = Event.order(sort_column + " " + sort_direction).where("title LIKE ? AND user_id <> ?", "%#{params[:search]}%", current_user.id).page(params[:page]).per_page(5)
+      else
+        @events = Event.order(sort_column + " " + sort_direction).where("user_id <> ?", current_user.id).page(params[:page]).per_page(5)
+      end    
+    else
+      if params[:search]
+        @events = Event.order(sort_column + " " + sort_direction).page(params[:page]).per_page(5)
+      else
+        @events = Event.order(sort_column + " " + sort_direction).where("title LIKE ? ", "%#{params[:search]}%").page(params[:page]).per_page(5)
+      end
+      
+    end    
   end
 
   def home
