@@ -1,14 +1,15 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index]
+  helper_method :sort_column, :sort_direction
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all.page(params[:page]).per_page(5)
+    @events = Event.order(sort_column + " " + sort_direction).where("user_id <> ?", current_user.id).page(params[:page]).per_page(5)
   end
 
   def home
-    @events = Event.where("user_id = ?", current_user.id).page(params[:page]).per_page(1)
+    @events = Event.order(sort_column + " " + sort_direction).where("user_id = ?", current_user.id).page(params[:page]).per_page(5)
   end
 
   # GET /events/1
@@ -61,11 +62,20 @@ class EventsController < ApplicationController
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
+      format.js
     end
   end
 
   private
+
+    def sort_column
+      Event.column_names.include?(params[:sort]) ? params[:sort] : "title"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])

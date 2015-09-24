@@ -28,7 +28,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'jquery-turbolinks'
 gem 'devise'
 gem 'omniauth-linkedin'
 gem 'omniauth-facebook'
