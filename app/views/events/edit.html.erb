@@ -1,6 +1,13 @@
-<h1>Editing Event</h1>
 
-<%= render 'form' %>
+	<div class="col-md-3"></div>
 
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+	<div class="well panel-default col-md-6">
+	  	<div class="panel-heading"><h3 class="text-center">Edit Event's Detail</h3></div>
+	  	<div class="panel-body"><br/>
+			<div>				   
+				<%= render 'form' %>
+				<%= link_to 'Show', @event %> |
+				<%= link_to 'Back', home_events_path %>
+			</div>
+		</div>	
+	</div>

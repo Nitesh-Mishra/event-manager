@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<div class="pull-right">
+      <%= button_to "Event's Page", events_path, :method => "get", :class=> "btn btn-primary" %>
+    </div>
 <h1 class= "text-center">Listing of User's Events</h1>
 <hr>
 <%= link_to 'New Event', new_event_path %>

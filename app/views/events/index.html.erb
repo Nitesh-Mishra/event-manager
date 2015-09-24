@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
-
+<% if user_signed_in? %>
+    <div class="pull-right">
+      <%= button_to "Dashboard", home_events_path, :method => "get", :class=> "btn btn-primary" %>
+    </div>
+<% end %>
 <h1 class= "text-center">Listing of all the Events</h1>
+    
 <hr>
-  
+<%= will_paginate @events %>  
 <table class="table table-hover">
   <thead>
     <tr>

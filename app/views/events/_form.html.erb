@@ -13,33 +13,33 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title , :class=> "form-control", :placeholder => "Enter the title of the Event" , :required => true%>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description , :class=> "form-control", :placeholder => "Enter the description of the Event" , :required => true%>
   </div>
   <div class="field">
     <%= f.label :date %><br>
-    <%= f.date_select :date %>
+    <%= f.date_select :date , :class=> "form-control", :required => true%>
   </div>
   <div class="field">
     <%= f.label :start_time %><br>
-    <%= f.text_field :start_time %>
+    <%= f.text_field :start_time , :class=> "form-control", :placeholder => "" , :required => true%>
   </div>
   <div class="field">
     <%= f.label :end_time %><br>
-    <%= f.text_field :end_time %>
+    <%= f.text_field :end_time , :class=> "form-control", :placeholder => "" , :required => true%>
   </div>
   <div class="field">
     <%= f.label :address %><br>
-    <%= f.text_area :address %>
+    <%= f.text_area :address , :class=> "form-control", :placeholder => "Enter the address of the Event" , :required => true%>
   </div>
   <div class="field">
-    <%= f.file_field :image %><br>
+    <%= f.file_field :image ,  :required => true%><br>
   </div>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class=> "form-control btn-primary" %>
   </div>
 <% end %>
