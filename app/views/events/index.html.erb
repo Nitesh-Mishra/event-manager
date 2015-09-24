@@ -7,7 +7,14 @@
 <h1 class= "text-center">Listing of all the Events</h1>
     
 <hr>
-<%= will_paginate @events %>  
+
+<div class="digg_pagination">
+    <div class="page_info">
+      <%= page_entries_info @posts %>
+    </div>
+    <%= will_paginate @posts, :container => false %>
+  </div>
+
 <table class="table table-hover">
   <thead>
     <tr>

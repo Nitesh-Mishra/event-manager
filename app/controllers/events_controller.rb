@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   end
 
   def home
-    @events = Event.where("user_id = ?", current_user.id)
+    @events = Event.where("user_id = ?", current_user.id).page(params[:page]).per_page(1)
   end
 
   # GET /events/1
