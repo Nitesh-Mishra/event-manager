@@ -13,9 +13,9 @@ class EventsController < ApplicationController
       end    
     else
       if params[:search]
-        @events = Event.order(sort_column + " " + sort_direction).page(params[:page]).per_page(5)
-      else
         @events = Event.order(sort_column + " " + sort_direction).where("title LIKE ? ", "%#{params[:search]}%").page(params[:page]).per_page(5)
+      else
+        @events = Event.order(sort_column + " " + sort_direction).page(params[:page]).per_page(5)
       end
       
     end    
